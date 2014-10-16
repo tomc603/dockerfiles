@@ -6,7 +6,7 @@ MAINTAINER Tom Cameron tomc603@gmail.com
 ENV MYID 001
 
 # Install the Java JRE
-RUN apt-get update && apt-get install -y default-jre-headless
+RUN apt-get update && apt-get install -y curl default-jre-headless
 
 # Download ZooKeeper
 RUN /usr/bin/curl http://www.us.apache.org/dist/zookeeper/current/zookeeper-3.4.6.tar.gz -o /tmp/zookeeper-3.4.6.tar.gz
