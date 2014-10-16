@@ -4,7 +4,8 @@ MAINTAINER Tom Cameron <tomc603@gmail.com>
 
 # Environment Variables
 ENV ZK_VERSION 3.4.6
-ENV ZK_CONF_DIR /opt/zookeeper-$ZK_VERSION/conf
+ENV ZK_DIR /opt/zookeeper-$ZK_VERSION
+ENV ZK_CONF_DIR $ZK_DIR/conf
 ENV MYID 001
 
 # Install the Java JRE
