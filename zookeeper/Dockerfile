@@ -9,7 +9,7 @@ ENV MYID 001
 RUN apt-get update && apt-get install -y default-jre-headless
 
 # Download ZooKeeper
-RUN wget -c http://www.us.apache.org/dist/zookeeper/current/zookeeper-3.4.6.tar.gz -O /tmp/zookeeper-3.4.6.tar.gz
+RUN curl http://www.us.apache.org/dist/zookeeper/current/zookeeper-3.4.6.tar.gz -o /tmp/zookeeper-3.4.6.tar.gz
 
 # Create required directories
 RUN mkdir -p /opt && \
