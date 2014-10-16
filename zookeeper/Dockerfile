@@ -32,6 +32,11 @@ RUN echo "tickTime=2000" > $ZK_CONF_DIR/zoo.cfg && \
     echo "clientPort=2181" >> $ZK_CONF_DIR/zoo.cfg && \
     echo "$MYID" > $ZK_CONF_DIR/myid
 
+# Create start script
+RUN echo "#!/bin/sh" > /zkstart.sh && \
+    echo "$ZK_DIR/bin/zkServer.sh start-foreground" >> /zkstart.sh && \
+    chmod +x /zkstart.sh
+
 EXPOSE 2181 2888 3888
 
-CMD ["/opt/zookeeper-$ZK_VERSION/bin/zkServer.sh", "start-foreground"]
+CMD ["/zkstart.sh"]
