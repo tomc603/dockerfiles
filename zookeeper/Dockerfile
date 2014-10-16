@@ -4,6 +4,7 @@ MAINTAINER Tom Cameron <tomc603@gmail.com>
 
 # Environment Variables
 ENV ZK_VERSION 3.4.6
+ENV ZK_CONF_DIR /opt/zookeeper-$ZK_VERSION/conf
 ENV MYID 001
 
 # Install the Java JRE
@@ -22,13 +23,13 @@ RUN tar -xz -C /opt -f /tmp/zookeeper-$ZK_VERSION.tar.gz && \
     rm /tmp/zookeeper-$ZK_VERSION.tar.gz
 
 # Create config file
-RUN echo "tickTime=2000" > /opt/zookeeper-$ZK_VERSION/conf/zoo.cfg && \
-    echo "initLimit=5" >> /opt/zookeeper-$ZK_VERSION/conf/zoo.cfg && \
-    echo "syncLimit=2" >> /opt/zookeeper-$ZK_VERSION/conf/zoo.cfg && \
-    echo "dataDir=/var/lib/zookeeper/data" >> /opt/zookeeper-$ZK_VERSION/conf/zoo.cfg && \
-    echo "dataLogDir=/var/lib/zookeeper/log" >> /opt/zookeeper-$ZK_VERSION/conf/zoo.cfg && \
-    echo "clientPort=2181" >> /opt/zookeeper-$ZK_VERSION/conf/zoo.cfg && \
-    echo "$MYID" > /opt/zookeeper-$ZK_VERSION/conf/myid
+RUN echo "tickTime=2000" > $ZK_CONF_DIR/zoo.cfg && \
+    echo "initLimit=5" >> $ZK_CONF_DIR/zoo.cfg && \
+    echo "syncLimit=2" >> $ZK_CONF_DIR/zoo.cfg && \
+    echo "dataDir=/var/lib/zookeeper/data" >> $ZK_CONF_DIR/zoo.cfg && \
+    echo "dataLogDir=/var/lib/zookeeper/log" >> $ZK_CONF_DIR/zoo.cfg && \
+    echo "clientPort=2181" >> $ZK_CONF_DIR/zoo.cfg && \
+    echo "$MYID" > $ZK_CONF_DIR/myid
 
 EXPOSE 2181 2888 3888
 
